@@ -24,7 +24,7 @@ _axios.interceptors.response.use(
 );
 
 const Plugin: PluginObject<AxiosRequestConfig> = {
-  install(Vue, options) {
+  install(Vue) {
     (Vue as any).axios = _axios;
     (window as any).axios = _axios;
     Object.defineProperties(Vue.prototype, {

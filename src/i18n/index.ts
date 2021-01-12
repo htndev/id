@@ -3,7 +3,6 @@ import VueI18n from 'vue-i18n';
 
 Vue.use(VueI18n);
 
-// On change of language, switch the /locals/_language_.json file
 function loadLocaleMessages() {
   const locales = require.context('./locales', true, /[A-Za-z0-9-_,\s]+\.json$/i);
   const messages: Record<string, any> = {};
@@ -17,7 +16,6 @@ function loadLocaleMessages() {
   return messages;
 }
 
-// Detect default language of browser, and apply it on start
 function detectLanguage() {
   const lng = (window.navigator as any).userLanguage || window.navigator.language;
   const locales = require.context('./locales', true, /[A-Za-z0-9-_,\s]+\.json$/i);

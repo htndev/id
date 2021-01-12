@@ -1,0 +1,25 @@
+@import './mixin/font.less';
+
+@fonts-path: '../../fonts';
+@graphik: 'Graphik';
+@graphik-lowercase: 'graphik';
+@font-ext: 'ttf';
+@font-type: 'truetype';
+@graphik-path: '@{fonts-path}/@{graphik-lowercase}';
+@graphik-font: '@{graphik-path}/@{graphik-lowercase}';
+
+.build-graphic-path(@type) {
+  @return: .build-font-path(@graphik-font, @type, @font-ext)[@return];
+}
+
+.font-face(@graphik, .build-graphic-path('extra-light')[@return], @font-type, 300);
+
+.font-face-italic(@graphik, .build-graphic-path('extra-light-italic')[@return], @font-type, 300);
+
+.font-face(@graphik, .build-graphic-path('regular')[@return], @font-type, 400);
+
+.font-face-italic(@graphik, .build-graphic-path('regular-italic')[@return], @font-type, 400);
+
+.font-face(@graphik, .build-graphic-path('bold')[@return], @font-type, 700);
+
+.font-face-italic(@graphik, .build-graphic-path('bold-italic')[@return], @font-type, 700);

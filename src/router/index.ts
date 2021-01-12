@@ -1,19 +1,23 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
     name: 'Home',
-    component: Home
+    path: '/',
+    redirect: '/signin'
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    name: 'SignIn',
+    path: '/signin',
+    component: () => import(/* webpackChunkName: "sign in" */ '../views/SignIn.vue')
+  },
+  {
+    name: 'Sign up',
+    path: '/signup',
+    component: () => import(/* webpackChunkName: "sign up" */ '../views/SignUp.vue')
   }
 ];
 
