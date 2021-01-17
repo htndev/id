@@ -1,0 +1,4 @@
+fragment status on StatusType {
+  status
+  message
+}

@@ -1,0 +1,5 @@
+query isTokenExists($token: String!) {
+  isTokenExists(token: $token) {
+    exists
+  }
+}

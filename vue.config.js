@@ -1,4 +1,5 @@
 module.exports = {
+  runtimeCompiler: true,
   pluginOptions: {
     i18n: {
       locale: 'en',
@@ -14,6 +15,12 @@ module.exports = {
     config.module
       .rule('vue')
       .use('vue-svg-inline-loader')
-      .loader('vue-svg-inline-loader');
+      .loader('vue-svg-inline-loader')
+      .end()
+      .rule('graphql')
+      .test(/\.(graphql|gql)$/)
+      .use('graphql-tag/loader')
+      .loader('graphql-tag/loader')
+      .end();
   }
 };

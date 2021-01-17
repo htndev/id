@@ -3,6 +3,13 @@ module.exports = {
   env: {
     node: true
   },
+  overrides: [
+    {
+      files: ['*.graphql'],
+      parser: '@graphql-eslint/eslint-plugin',
+      plugins: ['@graphql-eslint']
+    }
+  ],
   extends: [
     'plugin:vue/essential',
     'eslint:recommended',

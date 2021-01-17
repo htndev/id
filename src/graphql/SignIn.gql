@@ -1,0 +1,7 @@
+#import './StatusFragment.gql'
+
+mutation signIn($user: SignInUserInput!) {
+  signIn(user: $user) {
+    ...status
+  }
+}
