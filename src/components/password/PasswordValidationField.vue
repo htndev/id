@@ -88,12 +88,10 @@ export default class PasswordValidationField extends Vue {
 
   get errorMessages() {
     return {
-      'password.should.include-lowercase-letter': this.$t('password.should.be-minimum-length', [
-        FIELD_LENGTH.PASSWORD.MIN
-      ]),
-      'password.should.include-capital-letter': this.$tc('password.should.include-capital-letter', 1),
-      'password.should.include-digit': this.$tc('password.should.include-digit', 1),
-      'password.should.include-special-symbol': this.$tc('password.should.include-special-symbol', 1),
+      'password.should.include-lowercase-letter': this.$tc('password.should.include-lowercase-letter', 1, [1]),
+      'password.should.include-capital-letter': this.$tc('password.should.include-capital-letter', 1, [1]),
+      'password.should.include-digit': this.$tc('password.should.include-digit', 1, [1]),
+      'password.should.include-special-symbol': this.$tc('password.should.include-special-symbol', 1, [1]),
       'password.should.be-minimum-length': this.$t('password.should.be-minimum-length', [FIELD_LENGTH.PASSWORD.MIN])
     };
   }
