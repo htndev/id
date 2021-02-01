@@ -1,4 +1,3 @@
-import { REDIRECT_QUERY_PARAM } from './../common/constants';
 import { ALLOWED_PATH } from '@/common/constants';
 import { Route } from 'vue-router';
 import i18n from '@/i18n';

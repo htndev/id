@@ -51,6 +51,14 @@ const routes: Array<RouteConfig> = [
         meta: {
           path: 'recover'
         }
+      },
+      {
+        name: 'Email Confirmation',
+        path: 'confirm/:token',
+        component: () => import(/* webpackChunkName: "email confirmation" */ '../views/EmailConfirmation.vue'),
+        meta: {
+          path: 'confirm'
+        }
       }
     ]
   },

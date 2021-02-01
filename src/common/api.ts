@@ -41,6 +41,15 @@ class Api {
 
     window.location.replace(CLIENTS.homepage);
   }
+
+  emailConfirmed(email: string) {
+    return this.apollo.defaultClient.query({
+      query: require('../graphql/IsUserEmailConfirmed.gql'),
+      variables: {
+        email
+      }
+    });
+  }
 }
 
 export const API = new Api();

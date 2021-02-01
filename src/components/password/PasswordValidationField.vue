@@ -107,7 +107,7 @@ export default class PasswordValidationField extends Vue {
   @Watch('password')
   validateInput(value: string) {
     this.password = value;
-    this.rules.forEach(({ message, validator, rule }) => {
+    this.rules.forEach(({ validator, rule }) => {
       this.isValidRules[rule] = validator(this.password);
     });
     this.$emit('input', this.password);

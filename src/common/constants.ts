@@ -7,7 +7,9 @@ export enum HttpMessage {
 }
 
 export enum HttpStatus {
-  Conflict = 409
+  Conflict = 409,
+  NotFound = 404,
+  BadRequest = 400
 }
 
 export enum AllowedRedirectProps {
@@ -25,8 +27,6 @@ export const CLIENTS: { [k in AllowedRedirectProps]: string } = {
 export const ENDPOINTS = {
   PASSPORT: process.env.PASSPORT_URL || 'https://localhost:3000'
 };
-
-export const REDIRECT_QUERY_PARAM = 'to';
 
 export const FIELD_LENGTH = {
   EMAIL: {
@@ -47,7 +47,8 @@ export const ALLOWED_PATH = {
   SIGN_IN: 'signin',
   SIGN_UP: 'signup',
   FORGOT_PASSWORD: 'forgot-password',
-  PASSWORD_RECOVERY: 'recover'
+  PASSWORD_RECOVERY: 'recover',
+  EMAIL_CONFIRMATION: 'confirm'
 };
 
 export enum Language {

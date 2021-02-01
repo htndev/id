@@ -115,10 +115,10 @@ export default class NewPassword extends Vue {
   async created() {
     const {
       data: {
-        isTokenExists: { exists }
+        isPasswordResetTokenExists: { exists }
       }
-    } = await this.$apollo.query<{ isTokenExists: { exists: boolean } }>({
-      query: require('../graphql/IsTokenExists.gql'),
+    } = await this.$apollo.query<{ isPasswordResetTokenExists: { exists: boolean } }>({
+      query: require('../graphql/IsPasswordResetTokenExists.gql'),
       variables: {
         token: this.$route.params.token
       }

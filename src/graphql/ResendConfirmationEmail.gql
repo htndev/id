@@ -1,0 +1,7 @@
+#import './StatusFragment.gql'
+
+mutation resendConfirmationEmail($user: ResendConfirmationEmailInput!) {
+  resendConfirmationEmail(to: $user) {
+    ...status
+  }
+}

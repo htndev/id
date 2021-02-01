@@ -245,7 +245,6 @@ export default class SignUp extends Vue {
     if (!isValid) {
       this.username.valid = false;
       this.username.message = message as string;
-      return;
     }
   }
 
@@ -298,31 +297,25 @@ export default class SignUp extends Vue {
 
     try {
       const { ip } = await API.getIp();
-      const response = await this.$apollo.mutate<GraphqlResponse<'signUp'>>({
+      await this.$apollo.mutate<GraphqlResponse<'signUp'>>({
         mutation: require('../graphql/SignUp.gql'),
         variables: {
           user: {
             email: this.email.value,
             username: this.username.value,
             password: this.password.value,
-            ip
+            ip,
+            lang: this.$i18n.locale
           }
         }
       });
-      const { status, message = '' } = response.data?.signUp || {};
-      if (status === 201) {
-        this.$buefy.notification.open({
-          type: 'is-success',
-          message: this.$t('welcome') as string
-        });
-        API.redirectTo(this.$route.query.to as AllowedRedirectProps);
-        return;
-      }
 
       this.$buefy.notification.open({
-        type: 'is-danger',
-        message: message as string
+        type: 'is-success',
+        message: this.$t('signup-successful') as string,
+        duration: 7000
       });
+      this.$router.push(`/${this.$i18n.locale}/signin`);
     } catch (e) {
       const notificationOpts: BNotificationConfig = {
         message: '',
@@ -339,6 +332,7 @@ export default class SignUp extends Vue {
           });
         default: {
           const { message } = parseGqlError(e);
+          console.log(message);
           return this.$buefy.notification.open({
             ...notificationOpts,
             message: message

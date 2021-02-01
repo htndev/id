@@ -60,8 +60,7 @@
     "vue-cli-plugin-apollo": "~0.22.2",
     "vue-cli-plugin-axios": "~0.0.4",
     "vue-cli-plugin-buefy": "~0.3.8",
-    "vue-template-compiler": "^2.6.11",
-    "vue-translation-manager": "^1.2.0"
+    "vue-template-compiler": "^2.6.11"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"

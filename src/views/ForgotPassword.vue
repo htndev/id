@@ -1,7 +1,7 @@
 <template>
   <main>
     <base-layout :title="$t('recover.whats-your-email')" :description="$t('recover.enter-email')" expanded>
-      <form>
+      <form @submit.prevent="generateResetPasswordLink">
         <b-field>
           <b-input
             v-model="email.value"

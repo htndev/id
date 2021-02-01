@@ -1,0 +1,5 @@
+query isUserEmailConfirmed($email: String!) {
+	isUserEmailConfirmed(email: $email) {
+    confirmed
+  }
+}
