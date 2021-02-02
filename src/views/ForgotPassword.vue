@@ -17,6 +17,10 @@
             $t('recover.send-email')
           }}</b-button>
         </b-field>
+        <b-message type="is-warning" has-icon icon-size="is-medium">
+          <em>{{ $t('note') }}</em
+          >: {{ $t('confirm-email.previous') }}
+        </b-message>
       </form>
     </base-layout>
   </main>
@@ -52,7 +56,10 @@ export default class ForgetPassword extends Vue {
       await this.$apollo.mutate({
         mutation: require('../graphql/GenerateResetPasswordToken.gql'),
         variables: {
-          email: this.email.value
+          resetPassword: {
+            email: this.email.value,
+            lang: this.$i18n.locale
+          }
         }
       });
       this.sendButtonLoading = false;
