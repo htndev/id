@@ -25,7 +25,7 @@ export const CLIENTS: { [k in AllowedRedirectProps]: string } = {
 };
 
 export const ENDPOINTS = {
-  PASSPORT: process.env.PASSPORT_URL || 'https://localhost:3000'
+  PASSPORT: process.env.PASSPORT_URL || 'http://localhost:3000'
 };
 
 export const FIELD_LENGTH = {

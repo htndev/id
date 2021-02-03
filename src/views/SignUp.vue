@@ -332,7 +332,7 @@ export default class SignUp extends Vue {
           });
         default: {
           const { message } = parseGqlError(e);
-          console.log(message);
+
           return this.$buefy.notification.open({
             ...notificationOpts,
             message: message

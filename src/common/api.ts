@@ -33,9 +33,12 @@ class Api {
     return response.data.isAuthorized.isAuthorized;
   }
 
-  redirectTo(to: AllowedRedirectProps = AllowedRedirectProps.Player) {
+  redirectTo(to: AllowedRedirectProps = AllowedRedirectProps.Player, query?: { [k: string]: string }) {
     if (Object.values(AllowedRedirectProps).includes(to)) {
-      window.location.replace(CLIENTS[to as AllowedRedirectProps]);
+      const queryString = query && Object.keys(query).length ? this.objectToQueryParams(query) : '';
+      const url = `${CLIENTS[to as AllowedRedirectProps]}${queryString}`;
+
+      window.location.replace(url);
       return;
     }
 
@@ -49,6 +52,13 @@ class Api {
         email
       }
     });
+  }
+
+  private objectToQueryParams(queryParams: { [k: string]: string }): string {
+    const queryString = Object.keys(queryParams)
+      .map((key, i) => `${!i ? '' : '&'}${key}=${queryParams[key]}`)
+      .join('');
+    return `?${queryString}`;
   }
 }
 

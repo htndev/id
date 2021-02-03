@@ -58,7 +58,6 @@ export default class EmailConfirmation extends Vue {
         }
       ] = e.graphQLErrors;
 
-      console.log(status);
       this.errorMessage = this.$t(
         status === HttpStatus.Conflict ? 'confirm-email.error.not-found' : 'error.unknown'
       ) as string;
