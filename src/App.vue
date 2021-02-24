@@ -11,7 +11,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import AppHeader from '@/components/AppHeader.vue';
 import { API } from '@/common/api';
-import { AllowedRedirectProps } from './common/constants';
+import { ClientEndpoint } from '@xbeat/toolkit';
 
 @Component({
   components: { AppHeader }
@@ -21,7 +21,7 @@ export default class App extends Vue {
     const isAuthorized = await API.isAuthorized();
 
     if (isAuthorized) {
-      API.redirectTo(this.$route.query.to as AllowedRedirectProps);
+      API.redirectTo(this.$route.query.to as ClientEndpoint);
       return;
     }
   }

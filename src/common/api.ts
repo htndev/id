@@ -1,7 +1,7 @@
 import { CLIENTS } from './constants';
-import { AllowedRedirectProps } from '@/common/constants';
 import axios from 'axios';
 import { createProvider } from '@/apollo';
+import { ClientEndpoint } from '@xbeat/toolkit';
 
 type IpType = { ip: string };
 
@@ -33,10 +33,10 @@ class Api {
     return response.data.isAuthorized.isAuthorized;
   }
 
-  redirectTo(to: AllowedRedirectProps = AllowedRedirectProps.Player, query?: { [k: string]: string }) {
-    if (Object.values(AllowedRedirectProps).includes(to)) {
+  redirectTo(to: ClientEndpoint = ClientEndpoint.Player, query?: { [k: string]: string }) {
+    if (Object.values(ClientEndpoint).includes(to)) {
       const queryString = query && Object.keys(query).length ? this.objectToQueryParams(query) : '';
-      const url = `${CLIENTS[to as AllowedRedirectProps]}${queryString}`;
+      const url = `${CLIENTS[to as ClientEndpoint]}${queryString}`;
 
       window.location.replace(url);
       return;

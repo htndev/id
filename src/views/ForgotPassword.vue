@@ -30,9 +30,9 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { BNotificationConfig } from 'buefy/types/components';
 import BaseLayout from '@/components/BaseLayout.vue';
-import { FIELD_LENGTH } from '@/common/constants';
 import { parseGqlError } from '@/common/gql-response-validators';
 import isEmail from 'validator/es/lib/isEmail';
+import { FIELD_LENGTH } from '@xbeat/toolkit';
 
 @Component({ components: { BaseLayout } })
 export default class ForgetPassword extends Vue {

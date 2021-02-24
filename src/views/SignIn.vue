@@ -57,11 +57,11 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { LocaleMessage } from 'vue-i18n';
 import BaseLayout from '@/components/BaseLayout.vue';
-import { AllowedRedirectProps, FIELD_LENGTH, HttpStatus } from '@/common/constants';
 import { API } from '@/common/api';
 import { isAuthorized, isWrongEmailOrPassword, parseGqlError } from '@/common/gql-response-validators';
 import { GraphqlResponse } from '@/common/types';
 import { BNotificationConfig } from 'buefy/types/components';
+import { FIELD_LENGTH, ClientEndpoint, HttpStatus } from '@xbeat/toolkit';
 
 type Field = 'email' | 'password';
 const validator = (str: string) => str.length > 0;
@@ -237,7 +237,7 @@ export default class SignIn extends Vue {
         duration: 5000,
         position: 'is-bottom-right'
       });
-      API.redirectTo(this.$route.query.to as AllowedRedirectProps);
+      API.redirectTo(this.$route.query.to as ClientEndpoint);
     } catch (e) {
       this.signInButton.loading = false;
       const notificationOpts: BNotificationConfig = {
@@ -249,7 +249,7 @@ export default class SignIn extends Vue {
 
       switch (true) {
         case isAuthorized(e):
-          API.redirectTo(this.$route.query.to as AllowedRedirectProps);
+          API.redirectTo(this.$route.query.to as ClientEndpoint);
           return this.$buefy.notification.open({
             ...notificationOpts,
             message: this.$t('error.user.authorized') as string

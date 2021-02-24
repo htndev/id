@@ -1,4 +1,6 @@
-import { HttpStatus, HttpMessage } from './constants';
+import { HttpStatus } from '@xbeat/toolkit';
+
+import { HttpMessage } from './constants';
 
 export const parseGqlError = ({
   graphQLErrors: [

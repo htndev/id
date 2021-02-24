@@ -64,10 +64,10 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import { LocaleMessage } from 'vue-i18n';
+import { FIELD_LENGTH, ClientEndpoint } from '@xbeat/toolkit';
 import { BNotificationConfig } from 'buefy/types/components';
 import BaseLayout from '@/components/BaseLayout.vue';
 import PasswordValidationField from '@/components/password/PasswordValidationField.vue';
-import { AllowedRedirectProps, FIELD_LENGTH } from '@/common/constants';
 import { GraphqlResponse } from '@/common/types';
 import { API } from '@/common/api';
 import isEmail from 'validator/es/lib/isEmail';
@@ -325,7 +325,7 @@ export default class SignUp extends Vue {
       };
       switch (true) {
         case isAuthorized(e):
-          API.redirectTo(this.$route.query.to as AllowedRedirectProps);
+          API.redirectTo(this.$route.query.to as ClientEndpoint);
           return this.$buefy.notification.open({
             ...notificationOpts,
             message: this.$t('error.user.authorized') as string

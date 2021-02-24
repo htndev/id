@@ -23,9 +23,10 @@
 </template>
 
 <script lang="ts">
-import { ALLOWED_PATH, HttpStatus } from '@/common/constants';
+import { ALLOWED_PATH } from '@/common/constants';
 import { Vue, Component } from 'vue-property-decorator';
 import BaseLayout from '@/components/BaseLayout.vue';
+import { HttpStatus } from '@xbeat/toolkit';
 
 @Component({ components: { BaseLayout } })
 export default class EmailConfirmation extends Vue {

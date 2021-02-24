@@ -23,7 +23,7 @@
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { LocaleMessage } from 'vue-i18n';
 import PasswordRule from '@/components/password/PasswordRule.vue';
-import { FIELD_LENGTH } from '@/common/constants';
+import { FIELD_LENGTH } from '@xbeat/toolkit';
 
 type Rules =
   | 'password.should.include-lowercase-letter'
@@ -40,7 +40,6 @@ export default class PasswordValidationField extends Vue {
   @Prop({ type: Boolean, default: false })
   disabled!: boolean;
 
-  passwordLength = FIELD_LENGTH.PASSWORD;
   password = this.value;
   isInitialState = true;
   isValidRules = {
